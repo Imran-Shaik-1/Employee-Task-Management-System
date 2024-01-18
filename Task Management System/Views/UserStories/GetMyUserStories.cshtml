@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DBOperations.Models.UserStories_Model>
+
+@{
+    ViewBag.Title = "GetMyUserStories";
+}
+
+<h2>GetMyUserStories</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserStoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoryPoints)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserStoryID)
+    </td>
+    <td>
+        @Html.ActionLink(item.Title, "GetMyUserStorydetails", new { id = item.UserStoryID })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Priority)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StoryPoints)
+    </td>
+
+</tr>
+    }
+
+</table>
+
+
+<div>
+    @Html.ActionLink("Back to Index","Index","Home")
+</div>

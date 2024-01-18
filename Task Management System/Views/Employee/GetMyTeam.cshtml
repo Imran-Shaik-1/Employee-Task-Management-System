@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DBOperations.Models.Employees_Model>
+
+@{
+    ViewBag.Title = "GetMyEmployees";
+}
+
+<h3><b>This is your Team.</b></h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsManager)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsManager)
+            </td>
+            @if (item.EmployeeID == 1 || ViewBag.flag == true)
+            {
+                <td>
+                    <a href="/UserStories/GetEmpUserStories?Emp_id=@item.EmployeeID">Manage User Stories</a>
+
+                </td>
+            }
+        </tr>
+    }
+
+</table>
+
+
+<div>
+    @Html.ActionLink("Back to Index", "Index", "Home")
+</div>

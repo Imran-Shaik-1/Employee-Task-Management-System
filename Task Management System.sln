@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33927.289
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task Management System", "Task Management System\Task Management System.csproj", "{8654AAD9-9D19-4799-92A6-9507B0F255AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBOperations", "DBOperations\DBOperations.csproj", "{46B9FB80-7160-4BA6-B512-081E13310170}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8654AAD9-9D19-4799-92A6-9507B0F255AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8654AAD9-9D19-4799-92A6-9507B0F255AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8654AAD9-9D19-4799-92A6-9507B0F255AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8654AAD9-9D19-4799-92A6-9507B0F255AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46B9FB80-7160-4BA6-B512-081E13310170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46B9FB80-7160-4BA6-B512-081E13310170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46B9FB80-7160-4BA6-B512-081E13310170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46B9FB80-7160-4BA6-B512-081E13310170}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2036414B-FD92-4C0A-B192-9E093C2E6850}
+	EndGlobalSection
+EndGlobal

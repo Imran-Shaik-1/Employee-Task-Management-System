@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DBOperations.Models.UserStories_Model>
+
+@{
+    ViewBag.Title = "GetMyUserStories";
+}
+
+
+<div class="container mt-5">
+    <h2>Employee UserStories.</h2>
+    @Html.ActionLink("Assign new User Story", "AddUserStory", "UserStories", new { empid = @ViewBag.empid, managerid = @ViewBag.managerid }, new { @class = "btn btn-primary btn-sm-3" })
+    <br /><br />
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">StoryPoints</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(modelItem => item.UserStoryID)</th>
+                        <td>@Html.ActionLink(item.Title, "GetEmpUserStorydetails", new { id = item.UserStoryID })</td>
+                        <td>@Html.DisplayFor(modelItem => item.Priority)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>@Html.DisplayFor(modelItem => item.StoryPoints)</td>
+
+                        <td>@Html.ActionLink("Delete User Story", "DeleteUserStory", new { id = item.UserStoryID }, new { @class = "btn btn-danger btn-sm" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+    <div>
+        @Html.ActionLink("Back", "GetMyEmployees", "Employee", new { id = @ViewBag.managerid }, null)
+    </div>
+</div>

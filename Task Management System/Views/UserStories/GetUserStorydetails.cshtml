@@ -1,0 +1,102 @@
+﻿@model DBOperations.Models.UserStories_Model
+
+@{
+    ViewBag.Title = "GetUserStoriesdetails";
+}
+
+<div class="container mt-5">
+    <h2>View UserStory</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">ID</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.UserStoryID, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.UserStoryID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Title</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Title, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Description</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control custom-textarea", @readonly = "readonly", @rows = 10, @cols = 50 })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Created On</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.CreatedOn, "{0:yyyy-MM-dd HH:mm}", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Assigned Employee ID</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.AssignedEmployeeID, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.AssignedEmployeeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Due Date</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.DueDate, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Story Points</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.StoryPoints, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.StoryPoints, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Priority</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Priority, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+    @if (ViewBag.TasksCount > 0)
+    {
+        <h4>There are @Html.ActionLink($"{ViewBag.TasksCount} Tasks", "GetEmpTasks", "Task", new { userstoryid = Model.UserStoryID }, new { @class = "view-tasks" }) attached to this UserStory.</h4>
+    }
+    else
+    {
+        <h3>There are no tasks attached to this UserStory</h3>
+    }
+
+
+</div>
+
+<div class="mt-3">
+    @Html.ActionLink("Back", "GetAllUserStories", null, new { @class = "btn btn-secondary" })
+</div>

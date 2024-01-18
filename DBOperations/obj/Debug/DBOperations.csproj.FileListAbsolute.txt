@@ -1,0 +1,12 @@
+C:\Users\imran\source\repos\Task Management System\DBOperations\bin\Debug\DBOperations.dll.config
+C:\Users\imran\source\repos\Task Management System\DBOperations\bin\Debug\DBOperations.dll
+C:\Users\imran\source\repos\Task Management System\DBOperations\bin\Debug\DBOperations.pdb
+C:\Users\imran\source\repos\Task Management System\DBOperations\bin\Debug\EntityFramework.dll
+C:\Users\imran\source\repos\Task Management System\DBOperations\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\imran\source\repos\Task Management System\DBOperations\bin\Debug\EntityFramework.xml
+C:\Users\imran\source\repos\Task Management System\DBOperations\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\imran\source\repos\Task Management System\DBOperations\obj\Debug\DBOperations.csproj.CoreCompileInputs.cache
+C:\Users\imran\source\repos\Task Management System\DBOperations\obj\Debug\DBOperations.csproj.CopyComplete
+C:\Users\imran\source\repos\Task Management System\DBOperations\obj\Debug\DBOperations.dll
+C:\Users\imran\source\repos\Task Management System\DBOperations\obj\Debug\DBOperations.pdb
+C:\Users\imran\source\repos\Task Management System\DBOperations\obj\Debug\DBOperations.csproj.AssemblyReference.cache

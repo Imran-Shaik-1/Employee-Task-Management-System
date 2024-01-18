@@ -1,0 +1,94 @@
+﻿@model DBOperations.Models.Employees_Model
+
+@{
+    ViewBag.Title = "TerminateEmployee";
+}
+
+<h3>Are you sure you want to Terminate this employee?</h3>
+
+@if (ViewBag.UserStoriesCount > 0)
+{
+    <h4>Note that all the @Html.ActionLink($"{ViewBag.UserStoriesCount} UserStories and it's tasks ", "ViewEmpUserStories", "UserStories", new { Emp_id = Model.EmployeeID }, new { @class = "view-tasks" })attached to this Employee will also be deleted.</h4>
+}
+else
+{
+    <h3>There are no UserStories attached to this Employee.</h3>
+}
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsManager)
+        </dt>
+
+        <dd>
+            @if (Model.IsManager)
+            {
+                <span class="text-success">&#10003;</span>
+            }
+            else
+            {
+                <span>&#10007;</span>
+            }
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerID)
+        </dd>
+
+    </dl>
+
+
+    <div>
+        @if (ViewBag.message is null)
+        {
+            @Html.ActionLink("Delete", "ConfirmTerminate", "Employee", new { id = Model.EmployeeID }, new { @class = "btn btn-primary btn-lg" }) <br />
+        }
+        else
+        {
+            <h3>Can not terminate this Employee as this person is a manager of other Employees.</h3>
+        }
+    </div>
+</div>
+<br />
+<div>
+    @Html.ActionLink("Back to list", "GetEmployees", "Employee")
+
+</div>

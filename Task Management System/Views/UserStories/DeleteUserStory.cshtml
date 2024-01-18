@@ -1,0 +1,92 @@
+﻿@model DBOperations.Models.UserStories_Model
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Are you sure you want to delete this UserStory?</h2>
+@if (ViewBag.TasksCount > 0)
+{
+    <h3>Note that all the @Html.ActionLink($"{ViewBag.TasksCount} Tasks", "GetEmpTasks", "Task", new { userstoryid = Model.UserStoryID }, new { @class = "view-tasks" }) attached to this UserStory will also be deleted.</h3>
+}
+else
+{
+    <h3>There are no tasks attached to this UserStory</h3>
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StoryPoints)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StoryPoints)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Priority)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Priority)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+    </dl>
+
+    @Html.ActionLink("Delete", "ConfirmDelete", new { id = Model.UserStoryID }) <br /><br />
+
+</div>
+
+<div>
+    @Html.ActionLink("Back", "GetEmpUserStories", "UserStories", new { Emp_id = Model.AssignedEmployeeID }, null)
+</div>
