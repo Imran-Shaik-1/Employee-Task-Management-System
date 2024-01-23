@@ -49,7 +49,7 @@ namespace Task_Management_System.Controllers
             TempData["Email"] = model.EmailAddress;
             if (isnewEmail)
             {
-                ViewBag.Message = "Account with this Email does not exist. Please create a new Account";
+                ViewBag.Message = "Account with this Email does not exist.";
             }
             else
             {
@@ -73,7 +73,7 @@ namespace Task_Management_System.Controllers
             return View("forgotPassword",model);
         }
 
-        public ActionResult UpdatePassword(string Email)
+        public ActionResult UpdatePassword(string Email)  
         {
             TempData["Email"] = Email;
             ViewBag.ID = TempData.Peek("ID");
@@ -82,7 +82,7 @@ namespace Task_Management_System.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdatePassword(Employees_Model model)
+        public ActionResult UpdatePassword(Employees_Model model)   
         {
             if (ModelState.IsValidField("Password") && ModelState.IsValidField("ConfirmPassword"))
             {

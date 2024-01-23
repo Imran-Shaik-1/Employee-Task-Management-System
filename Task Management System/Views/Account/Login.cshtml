@@ -1,49 +1,55 @@
 ﻿@model DBOperations.Models.Employees_Model
 
 @{
+    Layout = null;
     ViewBag.Title = "Welcome";
 }
 
 <style>
     body {
-        background-image: url('../../Content/kelly-sikkema-LM17xCofKA0-unsplash.jpg');
-        background-size: cover;
-        background-position: center;
+        background-color: brown;
         padding: 0;
         font-family: 'Poppins', sans-serif;
         height: 100vh;
         margin: 0;
         display: flex;
-        justify-content: flex-end; /* Align content to the right */
+        justify-content: center; 
+        align-items: center;
+    }
+
+    .login-container {
+        display: flex;
         align-items: center;
     }
 
     .login-card {
-        background-color: #f0f0f0; /* Light gray background color */
-
-        padding: 30px;
+        background-color: wheat;
+        padding: 22px;
         border-radius: 10px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        width: 400px;
         text-align: center;
+        width: 80%;
+        max-width: 276px; 
+        margin-left: 30px; 
     }
 
         .login-card h2 {
-            color: #333;
             text-align: center;
         }
 
     .form-group {
         margin-bottom: 20px;
-        text-align: left; /* Align form elements to the left */
+        text-align: left;
     }
 
     .form-control {
-        background-color: #f5f5f5;
+        background-color: #ffffff;
         border: 1px solid #ccc;
         border-radius: 5px;
-        font-size: 16px;
-        padding: 10px;
+        font-size: 15px;
+        padding: 11px;
+        margin: 0 auto;
+        width: 100%; 
         color: #333;
     }
 
@@ -60,32 +66,104 @@
     .text-danger {
         color: #dc3545;
     }
+
+    .btm {
+        margin-top: 20px; 
+        width: 100%; 
+    }
+
+    .imgi {
+        width: 60%;
+        margin-right: 120px; 
+        margin-left: -150px;
+    }
+
+        .imgi img {
+            width: 150%;
+            height: auto;
+        }
+
+
+    .password {
+        display: inline-block;
+        position: relative;
+
+    }
+
+        .password input {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            padding: 11px;
+            margin: 0 auto;
+            width: 100%;
+            color: #333;
+            padding-right: 77px;
+            background-color: #ffffff;
+        }
+
+    .pass-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 24px;
+        cursor: pointer;
+    }
 </style>
 
-<div class="login-card">
-    <h2 class="text-center mb-4">Log in to your account</h2>
+<script>
+    var flag = false;
 
-    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
-    {
-        @Html.AntiForgeryToken()
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label" })
-            @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control", placeholder = "Email Address" })
-            @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, new { @class = "control-label" })
-            @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password" })
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group text-center">
-            <button type="submit" class="btn btn-primary btn-lg">Login</button>
-        </div>
-        <div class="form-group text-center">
-            @Html.ActionLink("Forgot Password?", "forgotPassword", "Account")
-        </div>
-        <div class="form-group text-center">
-            @Html.ActionLink("Create an Account", "Signup", "Account")
-        </div>
+    function pass() {
+        var passwordField = document.getElementById('password');
+        var passIcon = document.getElementById('pass-icon');
+
+        if (flag) {
+            passwordField.type = 'password';
+            passIcon.src = '/Content/hide.png'; 
+            flag = false;
+        } else {
+            passwordField.type = 'text';
+            passIcon.src = '/Content/visible.png'; 
+            flag = true;
+        }
     }
+</script>
+
+
+<div class="login-container">
+    <div class="imgi">
+        <img src="~/Content/logo_taskhub-removebg-preview.png" />
+    </div>
+
+    <div class="login-card">
+        <h2 class="text-center mb-4">Log in to your account</h2>
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control", placeholder = "Email Address" })
+                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group password">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password", id = "password" })
+                <img src="~/Content/hide.png" alt="pass" onclick="pass()" class="pass-icon" id="pass-icon">
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-lg btm text-center">Login</button>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group text-center">
+                @Html.ActionLink("Forgot Password?", "forgotPassword", "Account")
+            </div>
+            <div class="form-group text-center">
+                Don't have an account? @Html.ActionLink("Signup", "Signup", "Account")
+            </div>
+        }
+    </div>
 </div>

@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace DBOperations.Models
 {
     public class Employees_Model
     {
+        [DisplayName("Employee ID")]
         public int EmployeeID { get; set; }
 
-        [Required]
+        [Required][DisplayName("First Name")]
         public string FirstName { get; set; }
 
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
 
-        [Required][EmailAddress_Validation]
+        [Required]
+        [DisplayName("Email Address")]
+        [EmailAddress_Validation]
         public string EmailAddress { get; set; }
 
         public int OTP { get; set; }
@@ -27,6 +32,7 @@ namespace DBOperations.Models
 
         [Required(ErrorMessage = "Please confirm the Password")]
         [DataType(DataType.Password)]
+        [DisplayName("Confirm Password")]
         [Compare("Password", ErrorMessage = "Passwords do not match.")]
         public string ConfirmPassword { get; set; }
         

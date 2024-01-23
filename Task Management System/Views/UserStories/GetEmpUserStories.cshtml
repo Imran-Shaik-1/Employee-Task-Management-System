@@ -4,8 +4,13 @@
     ViewBag.Title = "GetMyUserStories";
 }
 
+<style>
+    .pad {
+        padding-right: 50px;
+    }
+</style>
 
-<div class="container mt-5">
+<div class="container pad mt-5">
     <h2>Employee UserStories.</h2>
     @Html.ActionLink("Assign new User Story", "AddUserStory", "UserStories", new { empid = @ViewBag.empid, managerid = @ViewBag.managerid }, new { @class = "btn btn-primary btn-sm-3" })
     <br /><br />

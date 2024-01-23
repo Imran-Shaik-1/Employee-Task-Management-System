@@ -4,14 +4,21 @@
     ViewBag.Title = "GetAllUserStories";
 }
 
-<div class="container mt-5">
+<style>
+    .pad {
+        padding-right: 50px;
+    }
+</style>
+
+<div class="container pad mt-5" max-auto>
     <h2>Get All User Stories</h2>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped ">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">UserStory ID</th>
+                    <th scope="col">Assigned Employee ID</th>
                     <th scope="col">Title</th>
                     <th scope="col">Status</th>
                     <th scope="col">Story Points</th>
@@ -21,13 +28,14 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <th scope="row">@Html.DisplayFor(modelItem => item.UserStoryID)</th>
-                        <td>@Html.ActionLink(item.Title, "GetUserStorydetails", new { id = item.UserStoryID })</td>
-                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
-                        <td>@Html.DisplayFor(modelItem => item.StoryPoints)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Priority)</td>
-                    </tr>
+                <tr>
+                    <th scope="row">@Html.DisplayFor(modelItem => item.UserStoryID)</th>
+                    <th scope="row">@Html.DisplayFor(modelItem => item.AssignedEmployeeID)</th>
+                    <td>@Html.ActionLink(item.Title, "GetUserStorydetails", new { id = item.UserStoryID })</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                    <td>@Html.DisplayFor(modelItem => item.StoryPoints)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Priority)</td>
+                </tr>
                 }
             </tbody>
         </table>

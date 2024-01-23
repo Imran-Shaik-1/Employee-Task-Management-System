@@ -2,36 +2,120 @@
 
 @{
     ViewBag.Title = "ConfirmOTP";
+    Layout = null;
 }
 
-<h2>ConfirmOTP</h2>
+<style>
+    body {
+        background-color: brown;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-@using (Html.BeginForm()) 
+    .form-container {
+        background-color: wheat;
+        padding: 22px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 80%;
+        max-width: 276px;
+    }
+
+    .signup-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .signup-card {
+        background-color: wheat;
+        padding: 22px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 80%;
+        max-width: 276px;
+        margin-left: 30px;
+    }
+
+        .signup-card h2 {
+            text-align: center;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+        padding: 11px;
+        width: 100%;
+        color: #333;
+    }
+
+    .btn-default {
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btm {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .imgi {
+        width: 60%;
+        margin-right: 120px;
+        margin-left: -150px;
+    }
+
+        .imgi img {
+            width: 150%;
+            height: auto;
+        }
+</style>
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
+
+<div class="signup-container">
+    <div class="imgi">
+        <img src="~/Content/logo_taskhub-removebg-preview.png" />
+    </div>
+    <div class="signup-card">
+        <h2 class="text-center mb-4">Confirm OTP</h2>
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+
         <h3>Enter the OTP sent to @ViewBag.Email</h3>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OTP, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.OTP, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OTP, "", new { @class = "text-danger" })
-            </div>
+            @Html.LabelFor(model => model.OTP, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.OTP, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.OTP, "", new { @class = "text-danger" })
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Verify OTP" class="btn btn-default" />
-            </div>
+            <input type="submit" value="Verify OTP" class="btn btn-default" />
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back", "Login")
 </div>
+}

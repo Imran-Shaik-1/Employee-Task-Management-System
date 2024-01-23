@@ -4,12 +4,19 @@
     ViewBag.Title = "TaskHub";
 }
 
+<style>
+    .gap {
+        margin-top: 60px;
+        padding-top: 100px;
+    }
+</style>
+
 <div class="jumbotron">
     <h2>TaskHub</h2>
     <p class="lead">Welcome to TaskHub @Model.FirstName</p>
 </div>
 
-<div class="row">
+<div class="d-flex justufy-content-around">
     <div class="col-md-4">
         <img src="~/Content/Profile.png" height="120px" width="120px" />
         <p></p>
@@ -24,29 +31,44 @@
         }
         else
         {
-            @Html.ActionLink("Dashboard", "GetAllUserStories", "UserStories", null,  new { @class = "btn btn-primary btn-lg" })
+            @Html.ActionLink("Dashboard", "GetAllUserStories", "UserStories", null, new { @class = "btn btn-primary btn-lg" })
         }
     </div>
     <div class="col-md-4">
-        <img src="~/Content/Team.png" height="120px" width="120px" />
-        <p></p>
-        @if (Model.EmployeeID != 1)
+        @if (Model.EmployeeID == 1)
         {
-            @Html.ActionLink("My Team", "GetMyTeam", "Employee", new { id = Model.ManagerID }, new { @class = "btn btn-primary btn-lg" })
+            <p></p><img src="~/Content/Manage Employees.png" height="120px" width="150px" />
+            <p></p>
+            @Html.ActionLink("Manage Employees", "GetEmployees", "Employee", null, new { @class = "btn btn-primary btn-lg" })
+        }
+        else if (Model.ManagerID == null)
+        {
+            <img src="~/Content/My Team.png" height="120px" width="120px" />
+            <p></p>
+            @Html.ActionLink("My Team", "GetMyTeam_NoManager", "Employee", null, new { @class = "btn btn-primary btn-lg" })
         }
         else
         {
-            @Html.ActionLink("Manage Employees", "GetEmployees", "Employee", null, new { @class = "btn btn-primary btn-lg" })
+            <img src="~/Content/My Team.png" height="120px" width="120px" />
+            <p></p>
+            @Html.ActionLink("My Team", "GetMyTeam", "Employee", new { id = Model.ManagerID }, new { @class = "btn btn-primary btn-lg" })
         }
     </div>
-    <div class="col-md-4">
-        <img src="~/Content/Team.png" height="120px" width="120px" />
-        <p></p>
-        @Html.ActionLink("My Employees", "GetMyEmployees", "Employee", new { id = Model.EmployeeID }, new { @class = "btn btn-primary btn-lg" })
-    </div>
-    <div class="col-md-4">
-        <img src="~/Content/Logout.png" height="120px" width="120px" />
-        <p></p>
-        @Html.ActionLink("Log Out", "Logout", "Account", null, new { @class = "btn btn-primary btn-lg" })
+</div>
+
+<p> </p>
+<div class="d-flex justufy-content-around">
+
+    <div class="d-grid gap-3">
+        <div class="col-md-4">
+            <img src="~/Content/Employees.png" height="120px" width="120px" />
+            <p></p>
+            @Html.ActionLink("My Employees", "GetMyEmployees", "Employee", new { id = Model.EmployeeID }, new { @class = "btn btn-primary btn-lg" })
+        </div>
+        <div class="col-md-4">
+            <img src="~/Content/Logout.png" height="120px" width="120px" />
+            <p></p>
+            @Html.ActionLink("Log Out", "Logout", "Account", null, new { @class = "btn btn-primary btn-lg" })
+        </div>
     </div>
 </div>

@@ -137,24 +137,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Achievements.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Dashboard.png" />
-    <Content Include="Content\kelly-sikkema-LM17xCofKA0-unsplash.jpg" />
+    <Content Include="Content\Employees.png" />
+    <Content Include="Content\hide.png" />
     <Content Include="Content\Logout.png" />
-    <Content Include="Content\Manager.png" />
+    <Content Include="Content\logo_taskhub-removebg-preview.png" />
+    <Content Include="Content\Manage Employees.png" />
+    <Content Include="Content\My Team.png" />
     <Content Include="Content\Profile.png" />
-    <Content Include="Content\Project.png" />
     <Content Include="Content\style.css" />
-    <Content Include="Content\TaskHub image.png" />
-    <Content Include="Content\TaskHub-From-Tasks-to-Triumphs-1-17-2024.png" />
-    <Content Include="Content\Tasks.png" />
-    <Content Include="Content\Team.png" />
-    <Content Include="Content\Termination.png" />
-    <Content Include="Content\User_Stories.png" />
+    <Content Include="Content\visible.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -195,13 +191,11 @@
     <Content Include="Views\UserStories\DeleteUserStory.cshtml" />
     <Content Include="Views\UserStories\GetAllUserStories.cshtml" />
     <Content Include="Views\UserStories\GetMyUserStories.cshtml" />
-    <Content Include="Views\Employee\GetAllRecords.cshtml" />
     <Content Include="Views\Employee\GetMyEmployees.cshtml" />
     <Content Include="Views\Account\updatePassword.cshtml" />
     <Content Include="Views\Employee\GetEmployees.cshtml" />
     <Content Include="Views\Employee\AssignManager.cshtml" />
     <Content Include="Views\Employee\TerminateEmployee.cshtml" />
-    <Content Include="Views\UserStories\UpdateUserStory.cshtml" />
     <Content Include="Views\UserStories\GetEmpUserStorydetails.cshtml" />
     <Content Include="Views\UserStories\GetEmpUserStories.cshtml" />
     <Content Include="Views\UserStories\GetMyUserStorydetails.cshtml" />
@@ -215,9 +209,7 @@
     <Content Include="Views\Employee\EditPassword.cshtml" />
     <Content Include="Views\Employee\UpdatePassword.cshtml" />
     <Content Include="Views\Account\ConfirmOTP.cshtml" />
-    <Content Include="Views\UserStories\ViewEmpUserStories.cshtml" />
-    <Content Include="Views\UserStories\ViewEmpUserStorydetails.cshtml" />
-    <Content Include="Views\Task\ViewEmpTasks.cshtml" />
+    <Content Include="Views\Employee\GetMyTeam_NoManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,68 +2,179 @@
 
 @{
     ViewBag.Title = "Signup";
+    Layout = null;
 }
 
-<h2>Signup</h2>
+<style>
+    body {
+        background-color: brown;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+    .signup-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .signup-card {
+        background-color: wheat;
+        padding: 22px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 80%;
+        max-width: 276px;
+        margin-left: 30px;
+    }
+
+        .signup-card h2 {
+            text-align: center;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .form-control {
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+        padding: 11px;
+        margin: 0 auto;
+        width: 100%;
+        color: #333;
+    }
+
+    .btn-default {
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btm {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .imgi {
+        width: 60%;
+        margin-right: 120px;
+        margin-left: -150px;
+    }
+
+        .imgi img {
+            width: 150%;
+            height: auto;
+        }
+
+    .password {
+        display: inline-block;
+        position: relative;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+        .password input {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            padding: 11px;
+            width: 275px;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+    .pass-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 24px;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    var flag = false;
+
+    function pass(passwordFieldId, passIconId) {
+        var passwordField = document.getElementById(passwordFieldId);
+        var passIcon = document.getElementById(passIconId);
+
+        if (flag) {
+            passwordField.type = 'password';
+            passIcon.src = '/Content/hide.png';
+            flag = false;
+        } else {
+            passwordField.type = 'text';
+            passIcon.src = '/Content/visible.png';
+            flag = true;
+        }
+    }
+</script>
+
+<div class="signup-container">
+    <div class="imgi">
+        <img src="~/Content/logo_taskhub-removebg-preview.png" />
+    </div>
+
+    <div class="signup-card">
+        <h2 class="text-center mb-4">Create an account</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First Name" } })
                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Name" } })
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group">
+                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "Email Address" } })
                 @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group password">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password", id = "password1" })
+                <img src="~/Content/hide.png" alt="pass" onclick="pass('password1', 'pass-icon1')" class="pass-icon" id="pass-icon1">
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group password">
+                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", id = "password2" })
+                <img src="~/Content/hide.png" alt="pass" onclick="pass('password2', 'pass-icon2')" class="pass-icon" id="pass-icon2">
                 @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
             </div>
-        </div>
-
         
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Signup" class="btn btn-default" />
+            <div class="form-group">
+                <input type="submit" value="Signup" class="btn btn-default btm" />
             </div>
+        }
+        <div>
+            Already have an account?  @Html.ActionLink("Login", "Login")
         </div>
-    </div>
-}
 
-<h3>@ViewBag.Message</h3>
-<div>
-    @Html.ActionLink("Login", "Login")
+    </div>
 </div>
+

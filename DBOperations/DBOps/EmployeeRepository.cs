@@ -45,7 +45,7 @@ namespace DBOperations.DBOps
             }
         }
 
-        public Employees_Model GetEmployee(int id)
+        public Employees_Model GetEmployee(int id)  
         {
             using (var context = new EmployeeManagementDBEntities())
             {
@@ -64,7 +64,7 @@ namespace DBOperations.DBOps
             }
         }
 
-        public void UpdateEmployee(int id, Employees_Model model)
+        public void UpdateEmployee(int id, Employees_Model model)   
         {
             using (var context = new EmployeeManagementDBEntities())
             {

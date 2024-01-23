@@ -1,56 +1,65 @@
 ﻿@model IEnumerable<DBOperations.Models.UserStories_Model>
 
 @{
-    ViewBag.Title = "GetMyUserStories";
+    ViewBag.Title = "GetUserStories";
 }
 
-<h2>GetMyUserStories</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserStoryID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Priority)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StoryPoints)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.UserStoryID)
-    </td>
-    <td>
-        @Html.ActionLink(item.Title, "GetMyUserStorydetails", new { id = item.UserStoryID })
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Priority)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Status)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.StoryPoints)
-    </td>
-
-</tr>
+<style>
+    .pad{
+        padding-right : 50px;
     }
+</style>
 
-</table>
+<div class="container pad mt-5" max-auto>
+    <h2>User Stories</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">UserStory ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Story Points</th>
+                    <th scope="col">Priority</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(modelItem => item.UserStoryID)</th>
+                        @if (ViewBag.path == "Admin")
+                        {
+                            <td>@Html.ActionLink(item.Title, "GetUserStorydetails", new { id = item.UserStoryID })</td>
+
+                        }
+                        else
+                        {
+                            <td>@Html.ActionLink(item.Title, "GetMyUserStorydetails", new { id = item.UserStoryID })</td>
+
+                        }
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>@Html.DisplayFor(modelItem => item.StoryPoints)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Priority)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+
+        @if (ViewBag.path == "Admin")
+        {
+            @Html.ActionLink("Back", "TerminateEmployee", "Employee", new { id = ViewBag.EmpId },null)
+        }
+        else
+        {
+            @Html.ActionLink("Back to Index", "Index", "Home")
+
+        }
+    </div>
 
 
-<div>
-    @Html.ActionLink("Back to Index","Index","Home")
 </div>

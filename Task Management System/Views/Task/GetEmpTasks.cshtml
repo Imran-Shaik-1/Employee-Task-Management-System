@@ -4,74 +4,55 @@
     ViewBag.Title = "GetTasks";
 }
 
-<h2>Tasks</h2>
+<style>
+    .pad {
+        padding-right: 50px;
+    }
+</style>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TaskID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
+<div class="container pad mt-5" max-auto>
+    <h2>Tasks</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Task ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">CreatedOn</th>
+                    <th scope="col">ModifiedOn</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(modelItem => item.TaskID)</th>
+                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CreatedOn)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ModifiedOn)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (ViewBag.path == "GetAllUserStories" || ViewBag.path == "Admin")
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedOn)
-            </td>
-        </tr>
+        <div>
+            @Html.ActionLink("Back", "GetUserStorydetails", "UserStories", new { id = ViewBag.id }, null)
+        </div>
     }
 
-</table>
-
-@if (ViewBag.flag == null)
-{
-    <div>
-        @Html.ActionLink("Back", "DeleteUserStory", "UserStories", new { id = ViewBag.id }, null)
-    </div>
-}
-
-else if (ViewBag.flag == true)
-{
-    <div>
-        @Html.ActionLink("Back", "GetUserStorydetails", "UserStories", new { id = ViewBag.id }, null)
-    </div>
-}
-
-else 
-{
-    <div>
-        @Html.ActionLink("Back", "GetEmpUserStorydetails", "UserStories", new { id = ViewBag.id }, null)
-    </div>
-}
+    else
+    {
+        <div>
+            @Html.ActionLink("Back", "GetEmpUserStorydetails", "UserStories", new { id = ViewBag.id }, null)
+        </div>
+    }
+</div>

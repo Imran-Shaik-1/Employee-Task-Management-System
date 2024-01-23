@@ -4,58 +4,67 @@
     ViewBag.Title = "GetMyEmployees";
 }
 
-<h3><b>This is your Team.</b></h3>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.EmployeeID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsManager)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsManager)
-            </td>
-            @if (item.EmployeeID == 1 || ViewBag.flag == true)
-            {
-                <td>
-                    <a href="/UserStories/GetEmpUserStories?Emp_id=@item.EmployeeID">Manage User Stories</a>
-
-                </td>
-            }
-        </tr>
+<style>
+    .pad {
+        padding-right: 50px;
     }
+</style>
 
-</table>
+<div class="container pad mt-5">
+    <h3><b>This is your Team.</b></h3>
 
+    <div>
+        <h4>
+            @ViewBag.Name is the Manager of this team. <a href="mailto:@ViewBag.Email">Contact Manager</a>
 
-<div>
-    @Html.ActionLink("Back to Index", "Index", "Home")
+        </h4>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Is Manager</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(modelItem => item.EmployeeID)</th>
+                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EmailAddress)</td>
+                        <td>
+                            @if (item.IsManager)
+                            {
+                                <span class="text-success">&#10003;</span>
+                            }
+                            else
+                            {
+                                <span>&#10007;</span>
+                            }
+                        </td>
+
+                        @if (item.EmployeeID == 1 || ViewBag.flag == true)
+                        {
+                            <td>
+                                <a href="/UserStories/GetEmpUserStories?Emp_id=@item.EmployeeID">Manage User Stories</a>
+
+                            </td>
+                        }
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to Index", "Index", "Home")
+    </div>
 </div>

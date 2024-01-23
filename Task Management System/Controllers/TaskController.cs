@@ -47,19 +47,7 @@ namespace Task_Management_System.Controllers
 
         public ActionResult GetEmpTasks(int userstoryid)
         {
-            ViewBag.flag = TempData["UserId"];
-            TempData.Keep();
-            var model = repository.GetTasks(userstoryid);
-            if (model != null)
-            {
-                ViewBag.id = model[0].AssignedUserStoryID;
-            }
-            return View(model);
-        }
-
-        public ActionResult ViewEmpTasks(int userstoryid)
-        {
-            ViewBag.flag = TempData["UserId"];
+            ViewBag.path = TempData["path"];
             TempData.Keep();
             var model = repository.GetTasks(userstoryid);
             if (model != null)

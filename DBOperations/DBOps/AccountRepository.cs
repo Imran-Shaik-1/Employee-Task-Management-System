@@ -37,7 +37,7 @@ namespace DBOperations.DBOps
             }
         }
 
-        public void updatePassword(Employees_Model model)
+        public void updatePassword(Employees_Model model)   
         {
             using (var context = new EmployeeManagementDBEntities())
             {

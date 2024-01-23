@@ -6,48 +6,38 @@
 
 <h2>Details</h2>
 
-<div>
+<div class="employee-details">
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EmployeeID)
-        </dt>
-
+        <dt>Employee ID</dt>
         <dd>
             @Html.DisplayFor(model => model.EmployeeID)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
+        <dt>First Name</dt>
         <dd>
             @Html.DisplayFor(model => model.FirstName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
+        <dt>Last Name</dt>
         <dd>
             @Html.DisplayFor(model => model.LastName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailAddress)
-        </dt>
-
+        <dt>Email Address</dt>
         <dd>
             @Html.DisplayFor(model => model.EmailAddress)
         </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit details", "Edit", new { id = Model.EmployeeID })     &nbsp;&nbsp;&nbsp;&nbsp;
-    @Html.ActionLink("Change Password", "EditPassword", new { id = Model.EmployeeID })
-</p>
 
-<div>
+<div class="action-links">
+    <p>
+        @Html.ActionLink("Edit Details", "Edit", new { id = Model.EmployeeID }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Change Password", "EditPassword", new { id = Model.EmployeeID }, new { @class = "btn btn-primary" })
+    </p>
+</div>
+
+<div class="back-to-index">
     @Html.ActionLink("Back to Index", "Index", "Home")
 </div>

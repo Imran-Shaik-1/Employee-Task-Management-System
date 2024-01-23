@@ -76,6 +76,20 @@ namespace DBOperations.DBOps
             }
         }
 
+        public List<Employees_Model> GetMyEmp(int id)
+        {
+            using (var context = new EmployeeManagementDBEntities())
+            {
+                var result = context.Employees.Where(x => x.ManagerID == id).
+                    Select(x => new Employees_Model()
+                    {
+                        EmployeeID = x.EmployeeID,
+                        FirstName = x.EmployeeID + " - " + x.FirstName
+                    }).ToList();
+                return result;
+            }
+        }
+
         public UserStories_Model GetUserStory(int userstory_id)
         {
             using (var context = new EmployeeManagementDBEntities())

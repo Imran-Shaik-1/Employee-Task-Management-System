@@ -3,31 +3,31 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - TaskHub</title>
     @Styles.Render("~/Content/css")
     <style>
         body {
-            background-color: #f8f9fa; /* Light grey background color */
+            background-color: darkslategrey;
         }
 
         .navbar {
-            background-color: #343a40; /* Dark background color for the navbar */
+            background-color: rgb(128 128 128)
         }
 
         .navbar-inverse .navbar-brand {
-            color: #ffffff; /* Navbar brand text color */
+            color: #ffffff;
         }
 
         .navbar-inverse .navbar-nav > li > a {
-            color: #ffffff; /* Navbar links text color */
+            color: #ffffff;
         }
 
         .container.body-content {
-            background-color: #ffffff; /* White background color for the main content area */
-            border-radius: 10px; /* Optional: Add rounded corners to the main content area */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
-            padding: 20px;
-            margin-top: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 30px;
         }
 
         footer {
@@ -47,11 +47,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("TaskHub", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
@@ -60,8 +59,7 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-    
-        <hr />
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")

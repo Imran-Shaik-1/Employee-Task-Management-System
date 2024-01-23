@@ -4,91 +4,149 @@
     ViewBag.Title = "TerminateEmployee";
 }
 
-<h3>Are you sure you want to Terminate this employee?</h3>
 
-@if (ViewBag.UserStoriesCount > 0)
-{
-    <h4>Note that all the @Html.ActionLink($"{ViewBag.UserStoriesCount} UserStories and it's tasks ", "ViewEmpUserStories", "UserStories", new { Emp_id = Model.EmployeeID }, new { @class = "view-tasks" })attached to this Employee will also be deleted.</h4>
-}
-else
-{
-    <h3>There are no UserStories attached to this Employee.</h3>
-}
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EmployeeID)
-        </dt>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.EmployeeID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsManager)
-        </dt>
-
-        <dd>
-            @if (Model.IsManager)
-            {
-                <span class="text-success">&#10003;</span>
-            }
-            else
-            {
-                <span>&#10007;</span>
-            }
-        </dd>
+    h2 {
+        color: #dc3545;
+    }
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ManagerID)
-        </dt>
+    .well {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.ManagerID)
-        </dd>
+    .dl-horizontal dt {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: right;
+    }
 
-    </dl>
 
 
+    .dl-horizontal dd {
+        margin-left: 0;
+    }
+
+    .btn-group {
+        margin-top: 20px;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    .btn-default {
+        color: #495057;
+        border: 1px solid #ccc;
+    }
+
+        .btn-default:hover {
+            background-color: #e0e0e0;
+        }
+</style>
+<div class="well">
+
+
+    <h2>Are you sure you want to Terminate this employee?</h2>
+
+    @if (ViewBag.UserStoriesCount > 0)
+    {
+        <h4>Note that all the @Html.ActionLink($"{ViewBag.UserStoriesCount} UserStories and it's tasks ", "GetMyUserStories", "UserStories", new { Emp_id = Model.EmployeeID }, new { @class = "view-tasks" })attached to this Employee will also be deleted.</h4>
+    }
+    else
+    {
+        <h3>There are no UserStories attached to this Employee.</h3>
+    }
     <div>
-        @if (ViewBag.message is null)
-        {
-            @Html.ActionLink("Delete", "ConfirmTerminate", "Employee", new { id = Model.EmployeeID }, new { @class = "btn btn-primary btn-lg" }) <br />
-        }
-        else
-        {
-            <h3>Can not terminate this Employee as this person is a manager of other Employees.</h3>
-        }
-    </div>
-</div>
-<br />
-<div>
-    @Html.ActionLink("Back to list", "GetEmployees", "Employee")
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </dt>
 
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmployeeID)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </dt>
+
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmailAddress)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IsManager)
+            </dt>
+
+            <dd class="col-sm-10">
+                @if (Model.IsManager)
+                {
+                    <span class="text-success">&#10003;</span>
+                }
+                else
+                {
+                    <span>&#10007;</span>
+                }
+            </dd>
+
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ManagerID)
+            </dt>
+
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ManagerID)
+            </dd>
+
+        </dl>
+
+
+
+        <div class="text-center">
+            <hr />
+            <div class="btn-group">
+                @if (ViewBag.message is null)
+                {
+                    @Html.ActionLink("Delete", "ConfirmTerminate", "Employee", new { id = Model.EmployeeID }, new { @class = "btn btn-danger" })
+                }
+                else
+                {
+                    <h3>Can not terminate this Employee as this person is a manager of other Employees.</h3>
+                }
+                @Html.ActionLink("Back to list", "GetEmployees", "Employee", new { @class = "btn btn-default" })
+
+            </div>
+        </div>
+    </div>
 </div>

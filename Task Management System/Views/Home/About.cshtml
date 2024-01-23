@@ -1,7 +1,45 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<style>
+    h2 {
+        color: #007bff;
+    }
+    h4 {
+        color: #343a40;
+    }
+</style>
+
+<body>
+
+    <div class="container mt-5">
+        <h2>About TaskHub an Employee Task Management System</h2>
+
+        <h4>Welcome to the TaskHub, a robust solution designed to streamline Task Management within your Organization.</h4>
+
+        <h3  class="text-primary">Key Features:</h3>
+        <ul>
+            <li><strong>UserStories Creation:</strong> Easily create and assign UserStories to employees.</li>
+            <li><strong>Employee Dashboard:</strong> Empower your employees with a dedicated dashboard to view and manage their UserStories.</li>
+            <li><strong>UserStories Tracking:</strong> Keep track of UserStories and their task status, progress, and due dates.</li>
+            <li><strong>Priority Management:</strong> Assign priorities to UserStories for efficient UserStories handling.</li>
+            <li><strong>Collaboration:</strong> Foster collaboration by allowing employees to comment and communicate within UserStories.</li>
+        </ul>
+
+        <h3 class="text-primary">How It Works:</h3>
+        <ol>
+            <li><strong>Create an Account:</strong> Register your organization and create user accounts for your employees.</li>
+            <li><strong>Create UserStories:</strong> Managers can create UserStories and assign them to specific employees.</li>
+            <li><strong>Employee Dashboard:</strong> Employees can log in to their dashboard to view and manage assigned UserStories and attach tasks and report them to their Manager.</li>
+            <li><strong>Task Updates:</strong> Track task progress, mark tasks as complete.</li>
+            <li><strong>Collaborate:</strong> Use the system to facilitate communication and collaboration among team members.</li>
+        </ol>
+
+        <p>Thank you for choosing our Employee Task Management System to enhance your organizational productivity!</p>
+       
+        @Html.ActionLink("Back to TaskHub", "Index", "Home",new { @class="btn btn-primary" })
+
+    </div>
+
+</body>

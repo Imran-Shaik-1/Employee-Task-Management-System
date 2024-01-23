@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "My Team";
+}
+
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #343a40;
+        margin: 0;
+    }
+
+    .error-container {
+        text-align: center;
+        padding: 20px;
+        background-color: #495057;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+        color: #ffffff;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .btn-contact-admin {
+        padding: 10px 20px;
+    }
+
+    p {
+        color: #ffffff;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="error-container">
+    <b><h2>Looks like there is no Manager assigned to you. Please contact Admin.</h2></b>
+    <a href="mailto:taskhubapplication@gmail.com" class="btn btn-primary btn-contact-admin" style="background-color: #007bff; color: #ffffff; text-decoration: none;">Contact Admin</a>
+</div>
