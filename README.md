@@ -61,4 +61,4 @@ We welcome contributions! If you have improvements or new features to suggest, f
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for.
